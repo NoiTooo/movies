@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import User,Video
+from .models import User, Video
+
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password','username','id')
+        fields = ('email', 'password', 'username', 'id', 'is_active')
         extra_kwargs = {'password': {'write_only': True, 'min_length': 5}}
 
     def create(self, validated_data):
@@ -14,8 +15,9 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
+
 class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ['id','title','video','thum','like','dislike']
+        fields = ['id', 'title', 'video', 'thum', 'like', 'dislike']

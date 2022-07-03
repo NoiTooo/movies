@@ -1,12 +1,13 @@
 from rest_framework import routers
 from django.urls import path
 from django.conf.urls import include
-from .views import VideoViewSet, CreateUserView
+from . import views
 
 router = routers.DefaultRouter()
-router.register('videos', VideoViewSet)
+router.register('videos', views.VideoViewSet)
 
 urlpatterns = [
-    path('create/', CreateUserView.as_view(), name='create'),
-    path('',include(router.urls)),
+    path('', include(router.urls)),
+    path('auth/users/deactivate/<str:pk>',
+         views.UserDeactivate.as_view(), name='deactivate')
 ]

@@ -8,7 +8,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    # path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
     # api/auth/ ^users/$ [name='user-list']
     # api/auth/ ^users\.(?P<format>[a-z0-9]+)/?$ [name='user-list']

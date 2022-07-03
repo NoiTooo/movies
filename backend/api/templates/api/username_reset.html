@@ -1,0 +1,11 @@
+{% block subject %}
+【Marese】メールアドレス変更
+{% endblock subject %}
+
+{% block text_body %}
+{{ name }}さま
+ご利用頂き、誠にありがとうございます。
+
+以下リンクから本登録を完了してください。
+{{ protocol }}://{{ domain }}/{{ url|safe }}
+{% endblock text_body %}

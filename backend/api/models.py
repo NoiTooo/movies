@@ -2,12 +2,15 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 import uuid
 
+
 def load_path_video(instance, filename):
     return '/'.join(['video', str(instance.title)+str(".mp4")])
+
 
 def load_path_thum(instance, filename):
     ext = filename.split('.')[-1]
     return '/'.join(['thum', str(instance.title)+str(".")+str(ext)])
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -28,6 +31,7 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
 
     id = models.UUIDField(default=uuid.uuid4,
@@ -43,6 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
 
 class Video(models.Model):
     id = models.UUIDField(default=uuid.uuid4,
